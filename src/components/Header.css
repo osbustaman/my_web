@@ -1,0 +1,87 @@
+/* General header styles */
+.header {
+    background-color: #37517E;
+    color: white;
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Button for mobile menu */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Navigation styles */
+.navigation {
+    display: flex;
+}
+
+.navigation ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.navigation ul li a:hover {
+    color: #47B2E4;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .navigation {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Below the header */
+        right: 0;
+        background-color: #37517E;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navigation.open {
+        display: flex;
+    }
+
+    .navigation ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navigation ul li {
+        padding: 10px 0;
+    }
+}
