@@ -1,13 +1,20 @@
 import React from 'react'
+import { Carousel } from '../components/Carousel'
+import { About } from '../components/About';
 
 export const Home = () => {
+
+    const images = [
+        'https://via.placeholder.com/1920x600/37517E/FFFFFF?text=Slide+1',
+        'https://via.placeholder.com/1920x600/37517E/FFFFFF?text=Slide+2',
+        'https://via.placeholder.com/1920x600/37517E/FFFFFF?text=Slide+3'
+    ];
+
+
     return (
-        <main>
-            <section className="hero">
-                <h1>Welcome to My Consultancy</h1>
-                <p>Your partner in full-stack development and cloud solutions.</p>
-                <button>Contact Me</button>
-            </section>
-        </main>
+        <>
+            <Carousel images={images} />
+            <About />
+        </>
     )
 }

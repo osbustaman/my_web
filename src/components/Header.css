@@ -1,87 +1,130 @@
-/* General header styles */
-.header {
-    background-color: #37517E;
-    color: white;
-    padding: 20px 0;
+/* Global styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
+/* Header styles */
+
+.header {
+    background-color: rgba(55, 81, 126, 0.9); /* Color con transparencia */
+    color: white;
+    padding: 10px 0;
+    position: fixed; /* Fija el header */
+    top: 0;
+    width: 100%; /* Asegura que el header ocupe todo el ancho */
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, opacity 0.3s; /* Efecto suave */
+}
+
+.header.scrolled {
+    background-color: rgba(55, 81, 126, 0.8);
+    opacity: 0.9;
+}
+
+.header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 20px;
 }
 
-.logo a {
+.header .logo a {
+    color: white;
     text-decoration: none;
-    font-size: 1.7rem;
+    font-size: 24px;
     font-weight: bold;
-    color: white;
 }
 
-/* Button for mobile menu */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: white;
-    cursor: pointer;
+.body-content {
+    margin-top: 70px; /* Altura del header */
 }
 
-/* Navigation styles */
-.navigation {
-    display: flex;
-}
-
+/* Navigation menu styles */
 .navigation ul {
-    display: flex;
-    gap: 40px;
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation ul li {
+    position: relative;
 }
 
 .navigation ul li a {
-    text-decoration: none;
-    font-size: 1rem;
     color: white;
-    transition: color 0.3s ease;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s, background-color 0.3s;
 }
 
-.navigation ul li a:hover {
+/* Hover and active states */
+.navigation ul li a:hover,
+.navigation ul li a.active {
     color: #47B2E4;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
 }
 
-/* Mobile-specific styles */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
+/* Mobile menu styles */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
 
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #37517E;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.open {
+    display: flex;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobile-menu ul li a {
+    padding: 10px 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
     .navigation {
         display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px; /* Below the header */
-        right: 0;
-        background-color: #37517E;
-        width: 100%;
-        text-align: center;
     }
 
-    .navigation.open {
-        display: flex;
+    .mobile-menu-toggle {
+        display: block;
     }
+}
 
-    .navigation ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .navigation ul li {
-        padding: 10px 0;
+@media (min-width: 769px) {
+    .mobile-menu {
+        display: none !important;
     }
 }

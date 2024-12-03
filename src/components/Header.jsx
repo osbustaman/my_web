@@ -3,32 +3,48 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 
 export const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
+        setMenuOpen(!menuOpen);
     };
 
     return (
         <header className="header">
             <div className="container">
                 <div className="logo">
-                    <Link to="/">Lokilabs </Link>
+                    <Link to="/">MyLogo</Link>
                 </div>
-                <button className="menu-toggle" onClick={toggleMenu}>
-                    ☰
-                </button>
-                <nav className={`navigation ${isMenuOpen ? 'open' : ''}`}>
+                <div className="hamburger" onClick={toggleMenu}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav className={`navigation ${menuOpen ? 'active' : ''}`}>
                     <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/services">Services</Link></li>
-                        <li><Link to="/portfolio">Portfolio</Link></li>
-                        <li><Link to="/about">About</Link></li>
-                        <li><Link to="/contact">Contact</Link></li>
+                        <li>
+                            <Link to="/" onClick={() => setMenuOpen(false)}>
+                                Inicio
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/services" onClick={() => setMenuOpen(false)}>
+                                Quienes Somos
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/about" onClick={() => setMenuOpen(false)}>
+                                Nuestros Servicios
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/contact" onClick={() => setMenuOpen(false)}>
+                                Contactanos
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </header>
     );
 };
-
